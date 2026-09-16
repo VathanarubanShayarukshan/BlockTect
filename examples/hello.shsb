@@ -1,0 +1,16 @@
+{
+  "format": "shsb",
+  "version": "1.0",
+  "name": "Hello World",
+  "created": "2026-09-16 10:00",
+  "blocks": {
+    "b1": { "id": "b1", "type": "when_loaded", "x": 40, "y": 40, "fields": {}, "next": "b2", "slots": {} },
+    "b2": { "id": "b2", "type": "add_tag", "x": 40, "y": 80, "fields": { "tag": "h1", "parent": "body", "id": "title" }, "next": "b3", "slots": {} },
+    "b3": { "id": "b3", "type": "set_text_tag", "x": 40, "y": 120, "fields": { "tag": "title", "value": "Hello from BlockTect!" }, "next": "b4", "slots": {} },
+    "b4": { "id": "b4", "type": "add_tag", "x": 40, "y": 160, "fields": { "tag": "button", "parent": "body", "id": "btn1" }, "next": "b5", "slots": {} },
+    "b5": { "id": "b5", "type": "set_text_tag", "x": 40, "y": 200, "fields": { "tag": "btn1", "value": "Click me!" }, "next": null, "slots": {} },
+    "b6": { "id": "b6", "type": "when_clicked", "x": 40, "y": 260, "fields": { "tag": "btn1" }, "next": "b7", "slots": {} },
+    "b7": { "id": "b7", "type": "set_text_tag", "x": 40, "y": 300, "fields": { "tag": "title", "value": "Button was clicked!" }, "next": "b8", "slots": {} },
+    "b8": { "id": "b8", "type": "run_cmd", "x": 40, "y": 340, "fields": { "cmd": "echo hello from blocktect" }, "next": null, "slots": {} }
+  }
+}
