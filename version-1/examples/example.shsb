@@ -1,0 +1,22 @@
+// BlockTect Example
+// Demo .shsb script
+
+CONTAINER when_page_load
+    BLOCK set_text #heading1 "வணக்கம் உலகம்!"
+    BLOCK set_css #heading1 "color" "blue"
+    CONTAINER html_button "btn1"
+        BLOCK set_text #btn1 "கிளிக் செய்"
+    END
+END
+
+CONTAINER when_tag_clicked #btn1
+    BLOCK var_set $counter 1
+    CONTAINER repeat 5
+        BLOCK var_change $counter 1
+        BLOCK say "சுற்று" 1
+    END
+END
+
+CONTAINER when_green_flag
+    BLOCK http_get "https://api.example.com/data"
+END

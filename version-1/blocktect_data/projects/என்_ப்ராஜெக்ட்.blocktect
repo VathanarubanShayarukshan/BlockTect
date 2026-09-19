@@ -1,0 +1,36 @@
+{
+  "blocks": [
+    {
+      "type": "forever",
+      "args": [],
+      "children": []
+    },
+    {
+      "type": "move_steps",
+      "args": [
+        "10"
+      ],
+      "children": []
+    },
+    {
+      "type": "when_key_pressed",
+      "args": [
+        "space"
+      ],
+      "children": []
+    },
+    {
+      "type": "html_div",
+      "args": [
+        "myDiv"
+      ],
+      "children": []
+    },
+    {
+      "type": "html_div",
+      "args": [],
+      "children": []
+    }
+  ],
+  "name": "\u0b8e\u0ba9\u0bcd_\u0baa\u0bcd\u0bb0\u0bbe\u0b9c\u0bc6\u0b95\u0bcd\u0b9f\u0bcd"
+}

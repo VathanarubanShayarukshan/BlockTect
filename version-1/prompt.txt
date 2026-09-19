@@ -1,0 +1,16 @@
+first
+--------------------------
+hello, i desisted to build a app. now scratch3 is an very easiest programing language but i can't build webapps 
+and desktop app in that only can run the code in scratch sandbox. so now make a python based tool for this. the 
+ui just like scratch but i have mention some changes in first imags. i can code the frontend and backend in same dashboard and variables and functions are same for ui and backend. and i can prewev it is the right windows box want write real python and html script use block logic
+users can download project as a .zip file py 
+and html code files in it or app write and batch script to make files and run it it self or download as a .shsb file it is my own progarming languge file for this project same function like scratch but some more event tags it is when page laod and when tag [tag id] clicked i can use 
+top 100 most used tag for ui and set must  a unic id for al tags becuse i can tracke the block use the id ican fix var or opereters in a dimind shape block and and more opereter it is <> -> <> it mean i can set a html tag is a variable use id and set variable name in left box and set in text or
+ other like js init -> is mean . in h1.intext like it and i can run command in os or accsess extarnell api or w r x files and more like python  i can edit dev tag in a popup like ms paint edit and get more blocks use botem btn named 2 in fisrt image. ok amke a single python script and  use guide and readme files to teach the shsb languge to ai use rag and give commands to run the tool  learn and test scratch3 software using this url https://scratch.mit.edu/ and add my own idea and make new tool but i want all scratch readymade 
+blocks and features in onow + my ideas 
+yess more block ctergerys html tags and command 
+exicute and custiome api arrays and i can accses more extarntions for more blocks from image.png btn and doyou want a example for buld the tool code then you can use the magiccode 3.0.html file it is scratch code based another microcontraler codeing platform
+id your want learn about more of my app ideathen your can
+use developer_data folder your all data init did your want
+a template for scratch tool then you can read Magiccode 3.0.html 
+file in the folder so done do your work
