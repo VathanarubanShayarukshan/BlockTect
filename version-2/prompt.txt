@@ -2,3 +2,13 @@ pr1= see donothing a simple work i have saved the html file of the magiccode app
 
 pr2= no this way is wrong allways becuse you made mistace agin becuse this code is to hard you can't make it own so edit the mgic code file only i think your issue is many unreachable extarnel links in script unit so whare can i get open src blockly src code becuse magiccodejs files are encripted so we can,t edit becuse it closed src. so i have cloned opensrc code for scracth your can edit the js files easyly  github repo url is https://github.com/scratchfoundation/scratch-gui.git now folder path is /workspaces/BlockTect/developer_data/scratch-gui ok do your work
 
+pr3= D:\Shayarukshan\Downlaods( Shai)\Scratch-Project>python Scratch-Project.py
+     File "D:\Shayarukshan\Downlaods( Shai)\Scratch-Project\Scratch-Project.py", line 110
+     def on_key_press(0):
+                     ^
+     SyntaxError: invalid syntax
+
+     D:\Shayarukshan\Downlaods( Shai)\Scratch-Project>
+
+    and make a batch file and bash file  into the zip file for runnpython app 
+
