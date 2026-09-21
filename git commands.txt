@@ -1,0 +1,1 @@
+cd developer_data/scratch-gui && git add . && git commit -m "Update GUI files" && cd ../.. && git add developer_data/scratch-gui && git commit -m "Update main repository GUI pointer" && git push
