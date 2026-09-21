@@ -12,3 +12,29 @@ pr3= D:\Shayarukshan\Downlaods( Shai)\Scratch-Project>python Scratch-Project.py
 
     and make a batch file and bash file  into the zip file for runnpython app 
 
+pr4=Microsoft Windows [Version 10.0.19045.6466]
+    (c) Microsoft Corporation. All rights reserved.
+
+    G:\Downloads\test>python test.py
+      File "G:\Downloads\test\test.py", line 110
+      def on_key_press(key_0):
+      IndentationError: expected an indented block after function definition on line 110
+
+     G:\Downloads\test>
+
+pr5=html ui not pen for ui i want run python file for logincs and html for ui like /workspaces/BlockTect/developer_data/21.09.2026_20.42.19_REC.png all images and meadia wat auto download for ui and see the cmd outputs (c) Microsoft Corporation. All rights reserved.
+
+    G:\Downloads\new>python new.py
+
+    G:\Downloads\new>python new.py
+
+    G:\Downloads\new>
+
+pr6=ok good flask app is working but my idea is i want downlaod the scratch notonly
+    a sb3 file and run it from only scratch ide i want downlaod it as a full project zip file
+    and run it like normal python and html webapp all meadias are uesed in scratch project want saved automaticly into the zip file for run ui html for show ui like 
+    /workspaces/BlockTect/developer_data/21.09.2026_20.42.19_REC.png and python backend for run logincs and rout the webui
+
+pr7= no not creat ui like /workspaces/BlockTect/developer_data/screencapture-127-0-0-1-5000-2026-09-21-21_28_03.jpg
+    i want direct ui for my scratch made app only like my sctach tool pervew tab ui
+    
