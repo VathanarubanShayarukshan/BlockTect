@@ -1,0 +1,24 @@
+pr1= see verion-0.3 folder edit scratch gui folder i want downlaod scracth project notonly sb3 file i want downlaod as a full python+html project app html ui for mimicry the scratch prevw panel and show ui in web python for run login see old version folder to earn full plan do you want 
+
+pr2= not make app your self i haved save the open crv code of scratch3 in scratch gui folder just edit it becuse your app and ui is bad
+
+pr3= G:\Downloads\New folder (2)>python Scratch-Project.py
+    Running Scratch Project
+    Traceback (most recent call last):
+      File "G:\Downloads\New folder (2)\Scratch-Project.py", line 13, in <module>
+        run()
+        ~~~^^
+      File "G:\Downloads\New folder (2)\Scratch-Project.py", line 9, in run
+        print(f"Targets: {len(PROJECT.get('targets', []))}")
+                          ^^^^^^^^^^^
+    AttributeError: 'str' object has no attribute 'get'
+
+    G:\Downloads\New folder (2)>
+
+
+    Debug this error and compress to zip file the all downlaod python and other file and downlaod as a .zip file 
+
+
+
+pr4= good code is working but see the bg of ui  error 
+      debug it and other things is so good 
