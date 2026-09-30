@@ -32,20 +32,14 @@ PowerShell-ல் workspace folder-க்கு செல்லவும்:
 
 ```powershell
 cd F:\codings\1My_Apps\BlockTect
-```
-
-பிறகு version 0.3 app folder-க்கு செல்லவும்:
-
-```powershell
 cd version-0.3\scratch-gui
+npm.cmd install
+npm.cmd start
 ```
+
+`package.json` உள்ள `version-0.3\scratch-gui` folder-லிருந்தே `npm` கட்டளைகளை இயக்க வேண்டும். PowerShell execution policy காரணமாக `npm` தடுக்கப்பட்டால், மேலே காட்டியுள்ள `npm.cmd` வடிவத்தைப் பயன்படுத்தவும்.
 
 ## 3. Scratch GUI-ஐ foreground-ல் இயக்குதல்
-
-```powershell
-npm install
-npm start
-```
 
 Webpack தொடங்கிய பிறகு browser-ல் இதைத் திறக்கவும்:
 
@@ -245,11 +239,11 @@ python -m py_compile app.py
 
 ```powershell
 cd F:\codings\1My_Apps\BlockTect\version-0.3\scratch-gui
-python app.py
+npm.cmd start
 ```
 
 பிறகு browser-ல்:
 
 ```text
-http://127.0.0.1:8080
+http://localhost:8601
 ```
