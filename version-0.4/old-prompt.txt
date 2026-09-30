@@ -1,0 +1,24 @@
+talk with me in tamil allways clone the github repo in new version-0.4 folder and doo all work init  use only /workspaces/BlockTect/version-0.4 folder for work donot learn about toher files i donot know the tubowarp src code repo url so clone it your self I am modifying the TurboWarp Desktop (Electron) open-source repository to add a custom "Full-Stack Export" feature. I want to add a new menu item in the File navbar and compile the project into two stacks (UI Frontend + Node.js Backend), as well as package the entire customized TurboWarp Desktop app into a Windows `.exe` file.
+
+Please analyze the codebase and help me implement the following step-by-step:
+
+### Task 1: Add "Export Full-Stack App" to the File Menu
+1. Locate the navigation bar and File menu component (typically inside `scratch-gui/src/components/menu-bar/menu-bar.jsx` or TurboWarp's custom desktop menu structure).
+2. Add a new menu button titled **"Save as Full-Stack App (UI + Backend)"** right under the existing export/save options.
+3. Wire this button to trigger a custom packaging function in `turbowarp-packager`.
+
+### Task 2: Implement 2-Stack Compilation Logic
+1. When the user clicks this option, parse the current Scratch project (`project.json` / AST).
+2. **Frontend Output:** Generate a static web bundle (HTML/CSS/JS) containing the standard Scratch blocks, stage canvas, and UI.
+3. **Backend Output:** Separate any blocks designated as "Server Logic" into a standalone `server.js` file for Node.js execution.
+4. **Auto-Bridge Connection:** Automatically inject a WebSocket / HTTP client script into the frontend bundle and a corresponding WebSocket / HTTP server script into `server.js` so both stacks can communicate seamlessly.
+5. Combine both outputs into a downloadable `.zip` file containing:
+   - `/public` (Frontend HTML/JS files)
+   - `server.js` (Backend Node.js code)
+   - `package.json` (with Express/WebSocket dependencies pre-configured)
+
+### Task 3: Build the Customized TurboWarp Desktop as a `.exe` File
+1. Review the `package.json` and build configurations for `electron-builder` in `turbowarp-desktop`.
+2. Provide the exact commands and script configurations needed to build and package this entire customized TurboWarp application into a standalone Windows `.exe` installer.
+
+Please guide me through the specific files I need to modify first, and write the necessary JavaScript/React code snippets for each task.
