@@ -1,0 +1,24 @@
+"Task: Extend the TurboWarp Packager to support a new build target environment named 'Full-Stack'.
+
+1. Repository Setup & Context:
+- Base Repository: Clone and modify the official TurboWarp Packager codebase (https://github.com/TurboWarp/packager).
+- Existing Functionality: Retain all standard options (HTML, Zip, Electron, NW.js, Webview, etc.) and maintain the core UI/UX workflow.
+
+2. Feature Specification: 'Full-Stack' Environment Target:
+- Add 'Full-Stack' as an option under the Environment / Target selection dropdown.
+- When 'Full-Stack' is selected, the output format must generate and download a structured .zip archive containing a self-contained Node.js server project.
+- Bundle Structure:
+  * server.js: Node.js server responsible for hosting the application and executing backend runtime logic.
+  * package.json: Contains required Node dependencies (e.g., express, ws, @turbowarp/vm, and relevant utility libraries).
+  * public/ (or static/): Frontend client assets (HTML, CSS, JS) that serve the rendered Web UI.
+  * README.md: Quick-start instructions (npm install && npm start).
+
+3. Execution & Architecture Split:
+- Server-Side Execution (server.js): The server runs the core Scratch/TurboWarp runtime logic. All extensions (built-in and custom extensions) and project logic must execute on the Node.js server instance rather than pure client-side browser memory. Process input events sent from connected browser clients and emit updated stage/sprite state back to the frontend.
+- Client-Side Interface (Web UI): The frontend HTML/JS interface acts as the display and input layer. Renders sprites, stages, costumes, sounds, and UI controls in the browser. Handles real-time communication (via WebSockets or HTTP stream) with server.js to send user inputs (clicks, keypresses, mouse movement) and receive updated frame data / state.
+
+4. Acceptance Criteria:
+- The TurboWarp Packager UI lists 'Full-Stack' as a valid selectable target environment.
+- Packaging a Scratch project with 'Full-Stack' produces a valid .zip bundle.
+- Running 'npm install' and 'npm start' inside the unzipped bundle spins up server.js.
+- Navigating to http://localhost:<port> opens a Web UI matching standard TurboWarp output, with project execution driven by the backend Node.js process."
