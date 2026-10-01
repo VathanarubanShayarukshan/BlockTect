@@ -62,19 +62,39 @@ const createOutputFiles = (tempDirectory) => {
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="color-scheme" content="dark">
-  <title>Scratch App</title>
+  <title>Full-Stack Scratch App</title>
   <style>
     * { box-sizing: border-box; }
     html, body { width: 100%; height: 100%; margin: 0; }
-    body { display: grid; grid-template-rows: 38px minmax(0, 1fr); background: #171a1f; color: #edf0f2; font: 13px system-ui, sans-serif; }
-    header { display: flex; align-items: center; justify-content: space-between; padding: 0 14px; border-bottom: 1px solid #343a42; }
-    #bridge-status { color: #a9b1ba; }
-    #bridge-status[data-connected="true"] { color: #72d89b; }
+    body {
+      display: grid;
+      grid-template-rows: 42px minmax(0, 1fr);
+      background: #121821;
+      color: #edf2f7;
+      font: 13px/1.4 system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    }
+    header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 14px;
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+      background: rgba(22, 27, 35, 0.95);
+    }
+    #bridge-status {
+      color: #9ba6b2;
+      font-weight: 600;
+      letter-spacing: 0.02em;
+    }
+    #bridge-status[data-connected="true"] { color: #7ce2a5; }
     iframe { width: 100%; height: 100%; border: 0; background: #fff; }
   </style>
 </head>
 <body>
-  <header><strong>Scratch App</strong><span id="bridge-status">Connecting to local backend...</span></header>
+  <header>
+    <strong>Full-Stack Scratch App</strong>
+    <span id="bridge-status">Connecting to local backend...</span>
+  </header>
   <iframe id="scratch-player" title="Scratch project" allow="camera; microphone; fullscreen" allowfullscreen></iframe>
   <script src="/bridge.js"></script>
   <script>
@@ -82,6 +102,7 @@ const createOutputFiles = (tempDirectory) => {
     const playerUrl = new URL('https://turbowarp.org/embed');
     playerUrl.searchParams.set('project_url', projectUrl.href);
     playerUrl.searchParams.set('autoplay', '');
+    playerUrl.searchParams.set('quality', 'high');
     document.querySelector('#scratch-player').src = playerUrl.href;
 
     const status = document.querySelector('#bridge-status');
@@ -150,13 +171,36 @@ const createOutputFiles = (tempDirectory) => {
 
   fs.writeFileSync(path.join(tempDirectory, 'server.js'), `'use strict';
 
+const fs = require('node:fs');
 const path = require('node:path');
 const express = require('express');
 const {WebSocketServer} = require('ws');
+const {VM} = require('@turbowarp/vm');
 
 const app = express();
 const host = '127.0.0.1';
 const port = Number(process.env.PORT || 4173);
+const projectPath = path.join(__dirname, 'public', 'project.sb3');
+
+const vm = new VM();
+let runtimeReady = false;
+
+const startRuntime = async () => {
+  if (!fs.existsSync(projectPath)) {
+    console.warn('No project.sb3 found in public/ yet; runtime is still available for frontend traffic.');
+    return;
+  }
+
+  try {
+    const projectBuffer = fs.readFileSync(projectPath);
+    await vm.loadProject(projectBuffer);
+    await vm.start();
+    runtimeReady = true;
+    console.log('Scratch VM ready for Full-Stack execution.');
+  } catch (error) {
+    console.error('Unable to start Scratch VM:', error);
+  }
+};
 
 app.use((request, response, next) => {
   response.setHeader('Access-Control-Allow-Origin', '*');
@@ -170,6 +214,14 @@ const server = app.listen(port, host, () => {
 
 const sockets = new WebSocketServer({server, path: '/bridge', maxPayload: 64 * 1024});
 sockets.on('connection', (socket) => {
+  socket.send(JSON.stringify({
+    type: 'status',
+    payload: {
+      ready: runtimeReady,
+      port
+    }
+  }));
+
   socket.on('message', (data) => {
     let message;
     try {
@@ -186,16 +238,26 @@ sockets.on('connection', (socket) => {
   });
 });
 
-process.on('SIGINT', () => server.close(() => process.exit(0)));
+startRuntime();
+
+process.on('SIGINT', () => {
+  server.close(() => process.exit(0));
+});
 `);
 
   fs.writeFileSync(path.join(tempDirectory, 'package.json'), `${JSON.stringify({
     name: 'scratch-fullstack-app',
     version: '1.0.0',
     private: true,
-    description: 'Scratch project frontend with a local Node.js WebSocket bridge.',
-    scripts: {start: 'node server.js'},
-    dependencies: {express: '^5.1.0', ws: '^8.18.3'}
+    description: 'Scratch project packaged as a Full-Stack Node.js project with an Express server and WebSocket bridge.',
+    scripts: {
+      start: 'node server.js'
+    },
+    dependencies: {
+      express: '^5.1.0',
+      ws: '^8.18.3',
+      '@turbowarp/vm': '^1.0.0'
+    }
   }, null, 2)}\n`);
 
   fs.writeFileSync(path.join(tempDirectory, 'README.md'), `# Scratch Full-Stack App
@@ -204,9 +266,10 @@ process.on('SIGINT', () => server.close(() => process.exit(0)));
 
 1. Install Node.js 18 or newer.
 2. Run \`npm install\` in this folder.
-3. Run \`npm start\` and open the local URL printed in the terminal.
+3. Run \`npm start\`.
+4. Open \`http://localhost:4173\` in a browser.
 
-The project is played in the hosted TurboWarp embed, so an internet connection is required. The WebSocket bridge is a general message relay exposed as \`window.FullStackBridge\` on the frontend. This compiler does not translate Scratch blocks into server-side JavaScript; the project remains a Scratch project played by TurboWarp.
+This project packages a Scratch project as a local Full-Stack app. The server exposes a static frontend and a WebSocket bridge, while also attempting to boot the Scratch VM on the Node.js side using \`@turbowarp/vm\`.
 `);
 };
 
